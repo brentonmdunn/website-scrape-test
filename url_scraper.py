@@ -2,6 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 import re
 from csv import writer
+import constant
 
 url = "http://courses.ucsd.edu/courseList.aspx?name=CSE%20&dept=true"
 

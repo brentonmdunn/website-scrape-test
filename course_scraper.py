@@ -4,16 +4,15 @@ import re
 import csv
 from csv import writer
 import pandas as pd
+import constant
 
-file = open("coursetester.csv")
+
+file = open(constant.COURSES_CSV)
 url_list = file.readlines()
 
 # Counts the number of lines
-csv_file = pd.read_csv("coursetester.csv")
+csv_file = pd.read_csv(constant.COURSES_CSV)
 number_of_lines = len(csv_file) + 1     # idk why I add 1 but it undercounts, maybe 0 indexing?
-
-
-# index = 6
 
 for index in range(number_of_lines):
 
@@ -27,8 +26,6 @@ for index in range(number_of_lines):
         print("Debug 2")
 
     print(page)
-
-    # if (page)
 
     soup = BeautifulSoup(page.content, "html.parser")
 
@@ -45,81 +42,86 @@ for index in range(number_of_lines):
         discussion_days = ''
         discussion_time = '' 
         discussion_location = ''
-        is_lecture = ''
-        is_final = ''
         days = ''
         time = ''
         location = ''
         category = ''
         section_code = ''
 
+        print("Debug code 3")
 
-
-
+        
         dept_code_section = soup.find('h1').text
         instructor = soup.find('a', id='instructor_HyperLink').text
-        category = soup.find('span', id='sections_DataGrid_type_Label_0').text
-        section_code = soup.find('span', id='sections_DataGrid_type_Label_0').text
-        days = soup.find('span', id='sections_DataGrid_days_Label_0').text
-        time = soup.find('span', id='sections_DataGrid_time_Label_0').text
-        location = soup.find('span', id='sections_DataGrid_location_Label_0').text
 
+        try:
+            category = soup.find('span', id='sections_DataGrid_type_Label_0').text
+            section_code = soup.find('span', id='sections_DataGrid_type_Label_0').text
+            days = soup.find('span', id='sections_DataGrid_days_Label_0').text
+            time = soup.find('span', id='sections_DataGrid_time_Label_0').text
+            location = soup.find('span', id='sections_DataGrid_location_Label_0').text
 
-        info = [category, dept_code_section, section_code, instructor, days, time, location]
-        thewriter.writerow(info)
-
-        print(dept_code_section)
-        print(instructor)
-        print(category + " | " + section_code + " | " + days + " | " + time + " | " + location)
-
-    #-------------------------------------------------------------------------------
-        discussion_list = soup.find_all('tr', class_='discussion')
-
-
-        discussion_list.append('')      # adds an extra item in list to account for final
-
-        discussion_count = 1
-
-        for discussion in discussion_list:
-            
-            category_section_num = "sections_DataGrid_type_Label_" + str(discussion_count)
-            section_code_section_num = "sections_DataGrid_section_Label_" + str(discussion_count)
-            days_section_num = "sections_DataGrid_days_Label_" + str(discussion_count)
-            time_section_num = "sections_DataGrid_time_Label_" + str(discussion_count)
-            location_section_num = "sections_DataGrid_location_Label_" + str(discussion_count)
-
-
-            category = soup.find('span', id=category_section_num).text
-            section_code = soup.find('span', id=section_code_section_num).text
-            days = soup.find('span', id=days_section_num).text
-            time = soup.find('span', id=time_section_num).text
-            location = soup.find('span', id=location_section_num).text
-
-
-
-            print(category + " | " + section_code + " | " + days + " | " + time + " | " + location)
-
-            discussion_count += 1
+            print("Debg code 4")
 
             info = [category, dept_code_section, section_code, instructor, days, time, location]
             thewriter.writerow(info)
+        except:
+            pass
+        print("Debug code 5")
+
+        # cuts off graduate courses
+        try:
+            if int(dept_code_section[4:7]) > 199:
+
+                break
+        except:
+            pass
+            
+
+        print(dept_code_section)
+        print(instructor)
+        print("Debug code 6")
+        print(category + " | " + section_code + " | " + days + " | " + time + " | " + location)
+        
 
     #-------------------------------------------------------------------------------
-
-        # list of 1, have to do this to locate where final is
-        # final_list = soup.find_all('tr', class_='final')
-
-        # for final in final_list:
-
-
-
-
-
-        # for item in soup.find()
-
+        
         
 
+        # seminars this doesn't happen
+        # bad coding but idk what else to do
+        try:
+            discussion_list = soup.find_all('tr', class_='discussion')
         
 
-        # is_lecture, is_final, dept_code_section, section_code, instructor, day, time, location
+            discussion_list.append('')      # adds an extra item in list to account for final
+
+            discussion_count = 1
+
+            for discussion in discussion_list:
+                
+                category_section_num = "sections_DataGrid_type_Label_" + str(discussion_count)
+                section_code_section_num = "sections_DataGrid_section_Label_" + str(discussion_count)
+                days_section_num = "sections_DataGrid_days_Label_" + str(discussion_count)
+                time_section_num = "sections_DataGrid_time_Label_" + str(discussion_count)
+                location_section_num = "sections_DataGrid_location_Label_" + str(discussion_count)
+
+
+                category = soup.find('span', id=category_section_num).text
+                section_code = soup.find('span', id=section_code_section_num).text
+                days = soup.find('span', id=days_section_num).text
+                time = soup.find('span', id=time_section_num).text
+                location = soup.find('span', id=location_section_num).text
+
+                print(category + " | " + section_code + " | " + days + " | " + time + " | " + location)
+
+                discussion_count += 1
+
+                info = [category, dept_code_section, section_code, instructor, days, time, location]
+                thewriter.writerow(info)
+        except:
+            continue
+            
+
+    #-------------------------------------------------------------------------------
     

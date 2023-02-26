@@ -1,0 +1,1 @@
+COURSES_CSV = "courses.csv"
