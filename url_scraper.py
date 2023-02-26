@@ -12,8 +12,8 @@ soup = BeautifulSoup(page.content, "html.parser")
 with open('courses.csv', 'w', encoding='utf8', newline='') as f:
 
     thewriter = writer(f)
-    header = ['Course']
-    thewriter.writerow(header)
+    # header = ['Course']
+    # thewriter.writerow(header)
 
     for link in soup.find_all('a', attrs={'href': re.compile("^coursemain.aspx")}):
 
