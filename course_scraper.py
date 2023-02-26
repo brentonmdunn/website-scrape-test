@@ -33,7 +33,6 @@ for index in range(number_of_lines):
 
         thewriter = writer(f)
 
-
         dept_code_section = ''
         instructor = ''
         lecture_days = ''
@@ -49,7 +48,6 @@ for index in range(number_of_lines):
         section_code = ''
 
         print("Debug code 3")
-
         
         dept_code_section = soup.find('h1').text
         instructor = soup.find('a', id='instructor_HyperLink').text
@@ -62,11 +60,12 @@ for index in range(number_of_lines):
             location = soup.find('span', id='sections_DataGrid_location_Label_0').text
 
             print("Debg code 4")
-
-            info = [category, dept_code_section, section_code, instructor, days, time, location]
-            thewriter.writerow(info)
         except:
             pass
+
+        info = [category, dept_code_section, section_code, instructor, days, time, location]
+        thewriter.writerow(info)
+        
         print("Debug code 5")
 
         # cuts off graduate courses
@@ -117,10 +116,12 @@ for index in range(number_of_lines):
 
                 discussion_count += 1
 
-                info = [category, dept_code_section, section_code, instructor, days, time, location]
-                thewriter.writerow(info)
+                
         except:
             continue
+
+        info = [category, dept_code_section, section_code, instructor, days, time, location]
+        thewriter.writerow(info)
             
 
     #-------------------------------------------------------------------------------
