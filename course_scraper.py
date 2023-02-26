@@ -3,25 +3,33 @@ import requests
 import re
 import csv
 from csv import writer
+import pandas as pd
 
 file = open("coursetester.csv")
 
 url_list = file.readlines()
 
 
+csv_file = pd.read_csv("coursetester.csv")
+
+number_of_lines = len(csv_file)
+
+print("LINESSSS ____ " + str(number_of_lines))
+
 # print("-----------")
 # print(url_list)
 
 
-index = 0
+index = 1
 
 # if contains \n
 # if str(url_list[index])[len(str(url_list[index]))-1:len(str(url_list[index]))]:
 
 # TODO: last page doesn't have \n
-page = requests.get(str(url_list[index])[0:len(str(url_list[index]))-1])
+# page = requests.get(str(url_list[index])[0:len(str(url_list[index]))-1])
 # else:
-#     page = requests.get(url_list[index])
+#     
+page = requests.get(url_list[index])
 
 print(page)
 
