@@ -14,22 +14,24 @@ url_list = file.readlines()
 csv_file = pd.read_csv(constant.COURSES_CSV)
 number_of_lines = len(csv_file) + 1     # idk why I add 1 but it undercounts, maybe 0 indexing?
 
-for index in range(number_of_lines):
+with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
-    print("{---------------------------}")
 
-    if (index < number_of_lines - 1):
-        page = requests.get(str(url_list[index])[0:len(str(url_list[index]))-1])
-        print("Debug 1")
-    else:
-        page = requests.get(url_list[index])
-        print("Debug 2")
+    for index in range(number_of_lines):
 
-    print(page)
+        print("{---------------------------}")
 
-    soup = BeautifulSoup(page.content, "html.parser")
+        if (index < number_of_lines - 1):
+            page = requests.get(str(url_list[index])[0:len(str(url_list[index]))-1])
+            print("Debug 1")
+        else:
+            page = requests.get(url_list[index])
+            print("Debug 2")
 
-    with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
+        print(page)
+
+        soup = BeautifulSoup(page.content, "html.parser")
+
 
         thewriter = writer(f)
 
@@ -122,7 +124,7 @@ for index in range(number_of_lines):
 
         info = [category, dept_code_section, section_code, instructor, days, time, location]
         thewriter.writerow(info)
-            
+                
 
     #-------------------------------------------------------------------------------
     
