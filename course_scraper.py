@@ -8,24 +8,19 @@ import pandas as pd
 file = open("coursetester.csv")
 url_list = file.readlines()
 
-
+# Counts the number of lines
 csv_file = pd.read_csv("coursetester.csv")
-
-number_of_lines = len(csv_file) + 1     # idk why I add 1 but it undercounts
-
-print("LINESSSS ____ " + str(number_of_lines))
+number_of_lines = len(csv_file) + 1     # idk why I add 1 but it undercounts, maybe 0 indexing?
 
 
-index = 0
+index = 6
 
-# if contains \n
-# if str(url_list[index])[len(str(url_list[index]))-1:len(str(url_list[index]))]:
-
-# TODO: last page doesn't have \n
-page = requests.get(str(url_list[index])[0:len(str(url_list[index]))-1])
-# else:
-#     
-# page = requests.get(url_list[index])
+if (index < number_of_lines - 1):
+    page = requests.get(str(url_list[index])[0:len(str(url_list[index]))-1])
+    print("Debug 1")
+else:
+    page = requests.get(url_list[index])
+    print("Debug 2")
 
 print(page)
 
@@ -69,6 +64,8 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
     info = [category, dept_code_section, section_code, instructor, days, time, location]
     thewriter.writerow(info)
 
+    print(dept_code_section)
+    print(instructor)
     print(category + " | " + section_code + " | " + days + " | " + time + " | " + location)
 
 #-------------------------------------------------------------------------------
