@@ -6,30 +6,26 @@ from csv import writer
 import pandas as pd
 
 file = open("coursetester.csv")
-
 url_list = file.readlines()
 
 
 csv_file = pd.read_csv("coursetester.csv")
 
-number_of_lines = len(csv_file)
+number_of_lines = len(csv_file) + 1     # idk why I add 1 but it undercounts
 
 print("LINESSSS ____ " + str(number_of_lines))
 
-# print("-----------")
-# print(url_list)
 
-
-index = 1
+index = 0
 
 # if contains \n
 # if str(url_list[index])[len(str(url_list[index]))-1:len(str(url_list[index]))]:
 
 # TODO: last page doesn't have \n
-# page = requests.get(str(url_list[index])[0:len(str(url_list[index]))-1])
+page = requests.get(str(url_list[index])[0:len(str(url_list[index]))-1])
 # else:
 #     
-page = requests.get(url_list[index])
+# page = requests.get(url_list[index])
 
 print(page)
 
@@ -42,7 +38,6 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
     thewriter = writer(f)
 
 
-    print("This works")
     dept_code_section = ''
     instructor = ''
     lecture_days = ''
@@ -59,54 +54,17 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
     category = ''
     section_code = ''
 
-    print("Works")
 
-    # for header in soup.find_all('h1'):
 
-    print("[----------------------------------------]")
 
     dept_code_section = soup.find('h1').text
-    print('dept_code_section: ' + str(dept_code_section))
-
     instructor = soup.find('a', id='instructor_HyperLink').text
-    print('instructor: ' + str(instructor))
-
-    # lecture_days = soup.find('span', id='sections_DataGrid_days_Label_0').text
-    # print('lecture days: ' + str(lecture_days))
-
-    # lecture_time = soup.find('span', id='sections_DataGrid_time_Label_0').text
-    # print('lecture time: ' + str(lecture_time))
-
-    # lecture_location = soup.find('span', id='sections_DataGrid_location_Label_0').text
-    # print('lecture location: ' + str(lecture_location))
-
-
-    # info = [dept_code_section, 
-    #         instructor, 
-    #         lecture_days, 
-    #         lecture_time, 
-    #         lecture_location, 
-    #         discussion_days,
-    #         discussion_time,
-    #         discussion_location]
-
     category = soup.find('span', id='sections_DataGrid_type_Label_0').text
-    print('category: ' + str(category))
-
     section_code = soup.find('span', id='sections_DataGrid_type_Label_0').text
-    print('category: ' + str(section_code))
-
     days = soup.find('span', id='sections_DataGrid_days_Label_0').text
-    print('days: ' + str(days))
-
     time = soup.find('span', id='sections_DataGrid_time_Label_0').text
-    print('time: ' + str(time))
-
     location = soup.find('span', id='sections_DataGrid_location_Label_0').text
-    print('location: ' + str(location))
 
-
-    print("[----------------------------------------]")
 
     info = [category, dept_code_section, section_code, instructor, days, time, location]
     thewriter.writerow(info)
