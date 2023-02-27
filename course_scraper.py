@@ -19,14 +19,14 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
     for index in range(number_of_lines):
 
-        print("{---------------------------}")
+        print("??++----------------------------------------------]]")
 
         if (index < number_of_lines - 1):
             page = requests.get(str(url_list[index])[0:len(str(url_list[index]))-1])
-            print("Debug 1")
+            # print("Debug 1")
         else:
             page = requests.get(url_list[index])
-            print("Debug 2")
+            # print("Debug 2")
 
         print(page)
 
@@ -46,8 +46,19 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
         location = ''
         category = ''
         section_code = ''
+        department = ''
+        course_code = ''
+        class_section_code = ''
+        start_time_num = ''
+        start_time_ampm = ''
+        end_time_num = ''
+        end_time_ampm = ''
+        building = ''
+        room = ''
+        quarter_season = ''
+        quarter_year = ''
 
-        print("Debug code 3")
+        # print("Debug code 3")
         
         dept_code_section = soup.find('h1').text
         instructor = soup.find('a', id='instructor_HyperLink').text
@@ -55,20 +66,57 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
         # Research sections don't have times listed
         try:
             category = soup.find('span', id='sections_DataGrid_type_Label_0').text
-            section_code = soup.find('span', id='sections_DataGrid_type_Label_0').text
+            section_code = soup.find('span', id='sections_DataGrid_section_Label_0').text
             days = soup.find('span', id='sections_DataGrid_days_Label_0').text
             time = soup.find('span', id='sections_DataGrid_time_Label_0').text
             location = soup.find('span', id='sections_DataGrid_location_Label_0').text
 
-            print("Debg code 4")
+            # print("Debg code 4")
+            
+            time_split = time.split()
+            location_split = location.split()
+
+            start_time_num = time_split[0]
+            start_time_ampm = time_split[1]
+            end_time_num = time_split[3]
+            end_time_ampm = time_split[4]
+
+            days = days.strip()
+
+
+            building = location_split[0]
+
+            if len(location_split) > 1:
+                room = location_split[1]
+            else:
+                room = ''
+
+
+            # print(dept_code_section.split())
+
+            dept_code_section_split = dept_code_section.split()
+
+            department = dept_code_section_split[0]
+            course_code = dept_code_section_split[1]
+            class_section_code = dept_code_section_split[2]
+            class_section_code = class_section_code[1:len(class_section_code)-1]
+            quarter_season = dept_code_section_split[4]
+            quarter_year = dept_code_section_split[5]
+            print(department + course_code + instructor + class_section_code)
+            
+
+
+
         except:
             pass
 
         # 
-        info = [category, dept_code_section, section_code, instructor, days, time, location]
+        # info = [category, dept_code_section, section_code, instructor, days, time, location]
+        info = [department, course_code, class_section_code, section_code, instructor, category, days, start_time_num, start_time_ampm, end_time_num, end_time_ampm, building, room]
+
         thewriter.writerow(info)
         
-        print("Debug code 5")
+        # print("Debug code 5")
 
         # cuts off graduate courses
         try:
@@ -79,10 +127,10 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
             pass
             
 
-        print(dept_code_section)
-        print(instructor)
-        print("Debug code 6")
-        print(category + " | " + section_code + " | " + days + " | " + time + " | " + location)
+        # print(dept_code_section)
+        # print(instructor)
+        # print("Debug code 6")
+        # print(category + " | " + section_code + " | " + days + " | " + time + " | " + location)
         
 
     #-------------------------------------------------------------------------------
@@ -114,19 +162,43 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
                 time = soup.find('span', id=time_section_num).text
                 location = soup.find('span', id=location_section_num).text
 
-                print(category + " | " + section_code + " | " + days + " | " + time + " | " + location)
+
+                # print(category + " | " + section_code + " | " + days + " | " + time + " | " + location)
 
                 discussion_count += 1
 
-                info = [category, dept_code_section, section_code, instructor, days, time, location]
+                time_split = time.split()
+                location_split = location.split()
+
+                start_time_num = time_split[0]
+                start_time_ampm = time_split[1]
+                end_time_num = time_split[3]
+                end_time_ampm = time_split[4]
+
+
+                building = location_split[0]
+
+                if len(location_split) > 1:
+                    room = location_split[1]
+                else:
+                    room = ''
+                
+
+                days = days.strip()
+
+                # info = [category, dept_code_section, section_code, instructor, days, time, location]
+                info = [department, course_code, class_section_code, section_code, instructor, category, days, start_time_num, start_time_ampm, end_time_num, end_time_ampm, building, room]
+
                 thewriter.writerow(info)
 
                 
         except:
             continue
 
+        # print("Debug code 7")
         
-                
+    
+        
 
     #-------------------------------------------------------------------------------
     
