@@ -63,6 +63,15 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
         dept_code_section = soup.find('h1').text
         instructor = soup.find('a', id='instructor_HyperLink').text
 
+        dept_code_section_split = dept_code_section.split()
+
+        department = dept_code_section_split[0]
+        course_code = dept_code_section_split[1]
+        class_section_code = dept_code_section_split[2]
+        class_section_code = class_section_code[1:len(class_section_code)-1]
+        quarter_season = dept_code_section_split[4]
+        quarter_year = dept_code_section_split[5]
+
         # Research sections don't have times listed
         try:
             category = soup.find('span', id='sections_DataGrid_type_Label_0').text
@@ -94,14 +103,7 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
             # print(dept_code_section.split())
 
-            dept_code_section_split = dept_code_section.split()
-
-            department = dept_code_section_split[0]
-            course_code = dept_code_section_split[1]
-            class_section_code = dept_code_section_split[2]
-            class_section_code = class_section_code[1:len(class_section_code)-1]
-            quarter_season = dept_code_section_split[4]
-            quarter_year = dept_code_section_split[5]
+            
             print(department + course_code + instructor + class_section_code)
             
 
@@ -120,12 +122,12 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
         # cuts off graduate courses
         try:
-            if int(dept_code_section[4:7]) > 199:
+            if int(course_code) > 199:
 
                 break
         except:
             pass
-            
+       
 
         # print(dept_code_section)
         # print(instructor)
