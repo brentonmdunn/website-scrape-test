@@ -118,12 +118,14 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
                 discussion_count += 1
 
+                info = [category, dept_code_section, section_code, instructor, days, time, location]
+                thewriter.writerow(info)
+
                 
         except:
             continue
 
-        info = [category, dept_code_section, section_code, instructor, days, time, location]
-        thewriter.writerow(info)
+        
                 
 
     #-------------------------------------------------------------------------------
