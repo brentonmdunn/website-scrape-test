@@ -95,22 +95,14 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
             days = days.strip()
 
-
             building = location_split[0]
 
             if len(location_split) > 1:
                 room = location_split[1]
             else:
                 room = ''
-
-
-            # print(dept_code_section.split())
-
             
             print(department + course_code + instructor + class_section_code)
-            
-
-
 
         except:
             pass
