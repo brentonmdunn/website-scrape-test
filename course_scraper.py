@@ -16,6 +16,9 @@ number_of_lines = len(csv_file) + 1     # idk why I add 1 but it undercounts, ma
 
 with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
+    thewriter = writer(f)
+    header = ['Department', 'Course code', 'Class section', 'Discussion section','Instructor', 'Meeting type', 'Days', 'Start time', 'AM/PM', 'End time', 'AM/PM', 'Building', 'Room']
+    thewriter.writerow(header)
 
     for index in range(number_of_lines):
 
@@ -31,7 +34,7 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
         print(page)
 
         soup = BeautifulSoup(page.content, "html.parser")
-        thewriter = writer(f)
+        
 
         dept_code_section = ''
         instructor = ''
