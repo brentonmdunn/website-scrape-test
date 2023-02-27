@@ -31,8 +31,6 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
         print(page)
 
         soup = BeautifulSoup(page.content, "html.parser")
-
-
         thewriter = writer(f)
 
         dept_code_section = ''
@@ -54,6 +52,7 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
         dept_code_section = soup.find('h1').text
         instructor = soup.find('a', id='instructor_HyperLink').text
 
+        # Research sections don't have times listed
         try:
             category = soup.find('span', id='sections_DataGrid_type_Label_0').text
             section_code = soup.find('span', id='sections_DataGrid_type_Label_0').text
@@ -65,6 +64,7 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
         except:
             pass
 
+        # 
         info = [category, dept_code_section, section_code, instructor, days, time, location]
         thewriter.writerow(info)
         
