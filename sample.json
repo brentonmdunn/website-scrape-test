@@ -1,0 +1,11 @@
+{
+  "first_name": "Brenton",
+  "last_name": "Dunn",
+  "birthday": "12/30/2003",
+  "hobbies": [
+    { "hobby1": "swimming" },
+    { "hobby2": "snow" },
+    { "hobby3": "water" },
+    { "hobby4": "climbing" }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "department": "CSE",
+  "course_code": "127",
+  "class_section_code": "A00",
+  "section_code": "A00",
+  "instructor": "Heninger",
+  "category": "LE",
+  "days": "TTh",
+  "start_time": "14:00",
+  "end_time": "15:20",
+  "building": "GH",
+  "room": "242",
+  "disc_num": 2,
+  "midterm": false,
+  "discussions": [
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A01",
+      "instructor": "",
+      "category": "DI",
+      "days": "W",
+      "start_time": "3:00",
+      "end_time": "3:50",
+      "building": "FAH",
+      "room": "1301"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A02",
+      "instructor": "",
+      "category": "DI",
+      "days": "W",
+      "start_time": "4:00",
+      "end_time": "4:50",
+      "building": "FAH",
+      "room": "1301"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "3/23/2023",
+      "instructor": "",
+      "category": "FI",
+      "days": "Th",
+      "start_time": "3:00",
+      "end_time": "5:59",
+      "building": "TBA",
+      "room": ""
+    }
+  ]
+}

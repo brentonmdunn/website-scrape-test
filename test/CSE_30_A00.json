@@ -1,0 +1,69 @@
+{
+  "department": "CSE",
+  "course_code": "30",
+  "class_section_code": "A00",
+  "section_code": "A00",
+  "instructor": "Soosai Raj",
+  "category": "LE",
+  "days": "TTh",
+  "start_time": "9:30",
+  "end_time": "10:50",
+  "building": "CENTR",
+  "room": "115",
+  "disc_num": 3,
+  "midterm": false,
+  "discussions": [
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A01",
+      "instructor": "",
+      "category": "DI",
+      "days": "F",
+      "start_time": "12:00",
+      "end_time": "12:50",
+      "building": "MOS",
+      "room": "0204"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A02",
+      "instructor": "",
+      "category": "DI",
+      "days": "F",
+      "start_time": "1:00",
+      "end_time": "1:50",
+      "building": "MOS",
+      "room": "0204"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A03",
+      "instructor": "",
+      "category": "DI",
+      "days": "F",
+      "start_time": "2:00",
+      "end_time": "2:50",
+      "building": "MOS",
+      "room": "0204"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "3/18/2023",
+      "instructor": "",
+      "category": "FI",
+      "days": "S",
+      "start_time": "11:30",
+      "end_time": "2:29",
+      "building": "TBA",
+      "room": ""
+    }
+  ]
+}

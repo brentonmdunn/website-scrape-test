@@ -1,0 +1,30 @@
+{
+  "department": "CSE",
+  "course_code": "190",
+  "class_section_code": "A00",
+  "section_code": "A00",
+  "instructor": "Bandeira",
+  "category": "LE",
+  "days": "TTh",
+  "start_time": "14:00",
+  "end_time": "15:20",
+  "building": "WLH",
+  "room": "2207",
+  "disc_num": 0,
+  "midterm": false,
+  "discussions": [
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "3/23/2023",
+      "instructor": "",
+      "category": "FI",
+      "days": "Th",
+      "start_time": "3:00",
+      "end_time": "5:59",
+      "building": "TBA",
+      "room": ""
+    }
+  ]
+}

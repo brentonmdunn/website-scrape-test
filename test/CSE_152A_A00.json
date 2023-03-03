@@ -1,15 +1,15 @@
 {
   "department": "CSE",
-  "course_code": "8B",
+  "course_code": "152A",
   "class_section_code": "A00",
   "section_code": "A00",
-  "instructor": "Miranda",
+  "instructor": "Chandraker",
   "category": "LE",
-  "days": "MWF",
-  "start_time": "10:00",
-  "end_time": "10:50",
-  "building": "WLH",
-  "room": "2001",
+  "days": "WF",
+  "start_time": "17:00",
+  "end_time": "18:20",
+  "building": "PCYNH",
+  "room": "106",
   "disc_num": 1,
   "midterm": false,
   "discussions": [
@@ -20,11 +20,11 @@
       "section_code": "A01",
       "instructor": "",
       "category": "DI",
-      "days": "W",
-      "start_time": "3:00",
-      "end_time": "3:50",
-      "building": "WLH",
-      "room": "2001"
+      "days": "M",
+      "start_time": "5:00",
+      "end_time": "5:50",
+      "building": "PCYNH",
+      "room": "106"
     },
     {
       "department": "CSE",
@@ -34,8 +34,8 @@
       "instructor": "",
       "category": "FI",
       "days": "M",
-      "start_time": "8:00",
-      "end_time": "10:59",
+      "start_time": "7:00",
+      "end_time": "9:59",
       "building": "TBA",
       "room": ""
     }

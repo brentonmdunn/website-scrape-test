@@ -23,8 +23,20 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
     header = ['Department', 'Course code', 'Class section', 'Discussion section','Instructor', 'Meeting type', 'Days', 'Start time', 'AM/PM', 'End time', 'AM/PM', 'Building', 'Room']
     thewriter.writerow(header)
 
+    count = 1
+
     for index in range(number_of_lines):
-        print(".")
+        
+        
+        
+
+        if count % 10 == 0:
+            print("---")
+
+        else:
+            print(".")
+        count+=1
+
 
         # print("??++----------------------------------------------]]")
 
@@ -64,7 +76,7 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
         room = ''
         quarter_season = ''
         quarter_year = ''
-        disc_num = ''
+        disc_num = 0
         start_24 = ''
         end_24 = ''
 
@@ -138,25 +150,25 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
             lect_location = soup.find('span', id='sections_DataGrid_location_Label_0').text
 
             # print("Debg code 4")
-            print(lect_time)
+            # print(lect_time)
             
             lect_time_split = lect_time.split()
             lect_location_split = lect_location.split()
 
-            print(lect_time_split)
+            # print(lect_time_split)
 
             lect_start_time_num = lect_time_split[0]
             lect_start_time_ampm = lect_time_split[1]
 
-            print(lect_start_time_ampm)
+            # print(lect_start_time_ampm)
 
             lect_end_time_num = lect_time_split[3]
             lect_end_time_ampm = lect_time_split[4]
 
 
-            print(lect_start_time_ampm == 'PM')
+            # print(lect_start_time_ampm == 'PM')
             if lect_start_time_ampm == 'PM':
-                print("pm run")
+                # print("pm run")
 
                 lect_colon_idx = lect_start_time_num.find(":")
                 lect_int_hr = int(lect_start_time_num[0:lect_colon_idx])
@@ -201,40 +213,23 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
         # thewriter.writelect_row(info)
 
-        lect_file_name = lect_department + "_" + lect_course_code + "_" + lect_class_section_code + ".json"
-
-        lect_this_dict = {
-            "department": lect_department,
-            "course_code": lect_course_code,
-            "class_section_code": lect_class_section_code,
-            "section_code": lect_section_code,
-            "instructor": lect_instructor,
-            "category": lect_category,
-            "days": lect_days,
-            "start_time": lect_start_time_num,
-            "end_time": lect_end_time_num,
-            "building": lect_building,
-            "room": lect_room,
-            # "disc_num": len(discussion_list)-1,# accounts for start index being 1
-            # "discussions": 
-        }
-
-        newDirectory = "test/" + str(lect_file_name)
-
-        with open(lect_file_name, "w") as outfile:
-            json.dump(lect_this_dict, outfile)
-        shutil.move(lect_file_name, newDirectory)
+        
         
 
         # cuts off graduate courses
         try:
-            if int(course_code) > 199:
+            if int(lect_course_code) > 199:
 
                 break
         except:
             pass
        
         
+        isMidterm = False
+
+        disc_list = []
+        disc_details_dict = {}
+
 
         # seminars this doesn't happen
         # bad coding but idk what else to do
@@ -256,6 +251,10 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
 
                 category = soup.find('span', id=category_section_num).text
+
+                if category == 'MI':
+                    isMidterm = True
+
                 section_code = soup.find('span', id=section_code_section_num).text
                 days = soup.find('span', id=days_section_num).text
                 time = soup.find('span', id=time_section_num).text
@@ -288,13 +287,74 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
                 days = days.strip()
 
                 # info = [category, dept_code_section, section_code, instructor, days, time, location]
-                info = [department, course_code, class_section_code, section_code, instructor, category, days, start_time_num, start_time_ampm, end_time_num, end_time_ampm, building, room]
+                # info = [department, course_code, class_section_code, section_code, instructor, category, days, start_time_num, start_time_ampm, end_time_num, end_time_ampm, building, room]
 
-                thewriter.writerow(info)
+                # thewriter.writerow(info)
+
+                disc_details_dict = {
+                    "department": "CSE",
+                    "course_code": course_code,
+                    "class_section_code": class_section_code,
+                    "section_code": section_code,
+                    "instructor": instructor,
+                    "category": category,
+                    "days": days,
+                    "start_time": start_time_num,
+                    "end_time": end_time_num,
+                    "building": building,
+                    "room": room,
+                }
+
+                # json_object = json.dumps(disc_details_dict)
+
+                # print(json_object)
+
+                disc_list.append(disc_details_dict)
 
                 
         except:
             continue
+
+        lect_file_name = lect_department + "_" + lect_course_code + "_" + lect_class_section_code + ".json"
+
+
+        isDiscussion = False
+
+
+        try:
+            # disc_list = len(discussion_list)-1 # accounts for start index being 1
+            discussion_list
+            isDiscussion = True
+        except:
+            pass
+    
+        # d_list = []
+        if isDiscussion:
+            disc_num = len(discussion_list)-1
+
+
+        lect_this_dict = {
+            "department": lect_department,
+            "course_code": lect_course_code,
+            "class_section_code": lect_class_section_code,
+            "section_code": lect_section_code,
+            "instructor": lect_instructor,
+            "category": lect_category,
+            "days": lect_days,
+            "start_time": lect_start_time_num,
+            "end_time": lect_end_time_num,
+            "building": lect_building,
+            "room": lect_room,
+            "disc_num": disc_num,
+            "midterm": isMidterm,
+            "discussions": disc_list
+        }
+
+        newDirectory = "test/" + str(lect_file_name)
+
+        with open(lect_file_name, "w") as outfile:
+            json.dump(lect_this_dict, outfile, indent=2)
+        shutil.move(lect_file_name, newDirectory)
 
         
 
