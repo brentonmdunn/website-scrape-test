@@ -68,33 +68,61 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
         start_24 = ''
         end_24 = ''
 
+        lect_dept_code_section = ''
+        lect_instructor = ''
+        lect_lecture_days = ''
+        lect_lecture_time = ''
+        lect_lecture_location = ''
+        lect_discussion_days = ''
+        lect_discussion_time = '' 
+        lect_discussion_location = ''
+        lect_days = ''
+        lect_time = ''
+        lect_location = ''
+        lect_category = ''
+        lect_section_code = ''
+        lect_department = ''
+        lect_course_code = ''
+        lect_class_section_code = ''
+        lect_start_time_num = ''
+        lect_start_time_ampm = ''
+        lect_end_time_num = ''
+        lect_end_time_ampm = ''
+        lect_building = ''
+        lect_room = ''
+        lect_quarter_season = ''
+        lect_quarter_year = ''
+        lect_disc_num = ''
+        lect_start_24 = ''
+        lect_end_24 = ''
+
         # print("Debug code 3")
         
-        dept_code_section = soup.find('h1').text
-        instructor = soup.find('a', id='instructor_HyperLink').text
+        lect_dept_code_section = soup.find('h1').text
+        lect_instructor = soup.find('a', id='instructor_HyperLink').text
 
-        two_dict = {
-            "dept_code_section": dept_code_section,
-            "instructor": instructor
-        }
+        # two_dict = {
+        #     "dept_code_section": dept_code_section,
+        #     "instructor": instructor
+        # }
 
         # os.system('rm smample1.json')
 
-        fileName = dept_code_section + ".json"
+        # fileName = dept_code_section + ".json"
 
         
         
         # newDirectory = "test/" + str(fileName)
         
 
-        dept_code_section_split = dept_code_section.split()
+        lect_dept_code_section_split = lect_dept_code_section.split()
 
-        department = dept_code_section_split[0]
-        course_code = dept_code_section_split[1]
-        class_section_code = dept_code_section_split[2]
-        class_section_code = class_section_code[1:len(class_section_code)-1]
-        quarter_season = dept_code_section_split[4]
-        quarter_year = dept_code_section_split[5]
+        lect_department = lect_dept_code_section_split[0]
+        lect_course_code = lect_dept_code_section_split[1]
+        lect_class_section_code = lect_dept_code_section_split[2]
+        lect_class_section_code = lect_class_section_code[1:len(lect_class_section_code)-1]
+        lect_quarter_season = lect_dept_code_section_split[4]
+        lect_quarter_year = lect_dept_code_section_split[5]
 
 
         
@@ -103,49 +131,57 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
         # Research sections don't have times listed
         try:
-            category = soup.find('span', id='sections_DataGrid_type_Label_0').text
-            section_code = soup.find('span', id='sections_DataGrid_section_Label_0').text
-            days = soup.find('span', id='sections_DataGrid_days_Label_0').text
-            time = soup.find('span', id='sections_DataGrid_time_Label_0').text
-            location = soup.find('span', id='sections_DataGrid_location_Label_0').text
+            lect_category = soup.find('span', id='sections_DataGrid_type_Label_0').text
+            lect_section_code = soup.find('span', id='sections_DataGrid_section_Label_0').text
+            lect_days = soup.find('span', id='sections_DataGrid_days_Label_0').text
+            lect_time = soup.find('span', id='sections_DataGrid_time_Label_0').text
+            lect_location = soup.find('span', id='sections_DataGrid_location_Label_0').text
 
             # print("Debg code 4")
+            print(lect_time)
             
-            time_split = time.split()
-            location_split = location.split()
+            lect_time_split = lect_time.split()
+            lect_location_split = lect_location.split()
 
-            start_time_num = time_split[0]
-            start_time_ampm = time_split[1]
-            end_time_num = time_split[3]
-            end_time_ampm = time_split[4]
+            print(lect_time_split)
+
+            lect_start_time_num = lect_time_split[0]
+            lect_start_time_ampm = lect_time_split[1]
+
+            print(lect_start_time_ampm)
+
+            lect_end_time_num = lect_time_split[3]
+            lect_end_time_ampm = lect_time_split[4]
 
 
-            if start_time_ampm == 'PM':
-                colon_idx = start_time_num.find(":")
-                int_hr = int(start_time_num[0:colon_idx])
+            print(lect_start_time_ampm == 'PM')
+            if lect_start_time_ampm == 'PM':
+                print("pm run")
+
+                lect_colon_idx = lect_start_time_num.find(":")
+                lect_int_hr = int(lect_start_time_num[0:lect_colon_idx])
+            # if int(int_hr) > 12:
+                lect_int_hr += 12
+                lect_start_time_num = str(lect_int_hr) + lect_start_time_num[lect_colon_idx:len(lect_start_time_num)]
+
+            if lect_end_time_ampm == 'PM':
+                lect_colon_idx = lect_end_time_num.find(":")
+                lect_int_hr = int(lect_end_time_num[0:lect_colon_idx])
                 # print("pm run")
             # if int(int_hr) > 12:
-                int_hr += 12
-                start_time_num = str(int_hr) + start_time_num[colon_idx:len(start_time_num)]
-
-            if end_time_ampm == 'PM':
-                colon_idx = end_time_num.find(":")
-                int_hr = int(end_time_num[0:colon_idx])
-                # print("pm run")
-            # if int(int_hr) > 12:
-                int_hr += 12
-                end_time_num = str(int_hr) + end_time_num[colon_idx:len(end_time_num)]
+                lect_int_hr += 12
+                lect_end_time_num = str(lect_int_hr) + lect_end_time_num[lect_colon_idx:len(lect_end_time_num)]
 
 
-            days = days.strip()
+            lect_days = lect_days.strip()
 
 
-            building = location_split[0]
+            lect_building = lect_location_split[0]
 
-            if len(location_split) > 1:
-                room = location_split[1]
+            if len(lect_location_split) > 1:
+                lect_room = lect_location_split[1]
             else:
-                room = ''
+                lect_room = ''
 
 
             # print(dept_code_section.split())
@@ -161,33 +197,33 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
 
         # 
         # info = [category, dept_code_section, section_code, instructor, days, time, location]
-        info = [department, course_code, class_section_code, section_code, instructor, category, days, start_time_num, start_time_ampm, end_time_num, end_time_ampm, building, room]
+        # info = [department, course_code, class_section_code, section_code, instructor, category, days, start_time_num, start_time_ampm, end_time_num, end_time_ampm, building, room]
 
-        thewriter.writerow(info)
+        # thewriter.writelect_row(info)
 
-        file_name = department + "_" + course_code + "_" + class_section_code + ".json"
+        lect_file_name = lect_department + "_" + lect_course_code + "_" + lect_class_section_code + ".json"
 
-        this_dict = {
-            "department": department,
-            "course_code": course_code,
-            "class_section_code": class_section_code,
-            "section_code": section_code,
-            "instructor": instructor,
-            "category": category,
-            "days": days,
-            "start_time": start_time_num,
-            "end_time": end_time_num,
-            "building": building,
-            "room": room,
+        lect_this_dict = {
+            "department": lect_department,
+            "course_code": lect_course_code,
+            "class_section_code": lect_class_section_code,
+            "section_code": lect_section_code,
+            "instructor": lect_instructor,
+            "category": lect_category,
+            "days": lect_days,
+            "start_time": lect_start_time_num,
+            "end_time": lect_end_time_num,
+            "building": lect_building,
+            "room": lect_room,
             # "disc_num": len(discussion_list)-1,# accounts for start index being 1
             # "discussions": 
         }
 
-        newDirectory = "test/" + str(file_name)
+        newDirectory = "test/" + str(lect_file_name)
 
-        with open(fileName, "w") as outfile:
-            json.dump(this_dict, outfile)
-        shutil.move(fileName, newDirectory)
+        with open(lect_file_name, "w") as outfile:
+            json.dump(lect_this_dict, outfile)
+        shutil.move(lect_file_name, newDirectory)
         
 
         # cuts off graduate courses
