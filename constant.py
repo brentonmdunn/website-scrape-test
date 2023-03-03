@@ -1,1 +1,1 @@
-COURSES_CSV = "courses.csv"
+COURSES_CSV = "coursetester.csv"
