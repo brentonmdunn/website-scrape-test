@@ -1,0 +1,88 @@
+{
+  "CSE8AA00": [
+    {
+      "department": "CSE",
+      "couse_code": "8A",
+      "class_section": "A00",
+      "discussion_section": "A00",
+      "instructor": "Elsherif",
+      "meeting_type": "LE",
+      "days": "TTh",
+      "start_time": "2:00",
+      "start_time_ampm": "PM",
+      "end_time": "3:20",
+      "end_time_ampm": "PM",
+      "building": "WLH",
+      "room": "2005"
+    },
+    {
+      
+    }
+  ],
+
+  "CSE8BA00": [
+    {
+      "department": "CSE",
+      "couse_code": "8B",
+      "class_section": "A00",
+      "discussion_section": "A00",
+      "instructor": "Miranda",
+      "meeting_type": "LE",
+      "days": "MWF",
+      "start_time": "10:00",
+      "start_time_ampm": "AM",
+      "end_time": "10:50",
+      "end_time_ampm": "AM",
+      "building": "WLH",
+      "room": "2001"
+    },
+    {
+      "department": "CSE",
+      "couse_code": "8B",
+      "class_section": "A00",
+      "discussion_section": "A01",
+      "instructor": "Miranda",
+      "meeting_type": "DI",
+      "days": "W",
+      "start_time": "3:00",
+      "start_time_ampm": "PM",
+      "end_time": "3:50",
+      "end_time_ampm": "PM",
+      "building": "WLH",
+      "room": "2001"
+    },
+    {
+      "department": "CSE",
+      "couse_code": "8B",
+      "class_section": "A00",
+      "discussion_section": "3/20/2023",
+      "instructor": "Miranda",
+      "meeting_type": "FI",
+      "days": "M",
+      "start_time": "8:00",
+      "start_time_ampm": "AM",
+      "end_time": "10:59",
+      "end_time_ampm": "AM",
+      "building": "TBA",
+      "room": ""
+    }
+  ]
+}
+
+
+maybe: 
+{
+  "department": "CSE",
+  "couse_code": "8B",
+  "class_section": "A00",
+  "discussion_section": "3/20/2023",
+  "instructor": "Miranda",
+  "meeting_type": "FI",
+  "days": "M",
+  "start_time_hr": "08",
+  "start_time_min": "00",
+  "end_time_hr": "10",
+  "end_time_min": "59",
+  "building": "TBA",
+  "room": ""
+}
