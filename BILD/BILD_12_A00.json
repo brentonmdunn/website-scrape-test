@@ -1,0 +1,82 @@
+{
+  "department": "BILD",
+  "course_code": "12",
+  "class_section_code": "A00",
+  "section_code": "A00",
+  "instructor": "Komiyama",
+  "category": "LE",
+  "days": "TTh",
+  "start_time": "17:00",
+  "end_time": "18:20",
+  "building": "TATA",
+  "room": "3201",
+  "disc_num": 4,
+  "midterm": false,
+  "discussions": [
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A01",
+      "instructor": "",
+      "category": "DI",
+      "days": "M",
+      "start_time": "6:00",
+      "end_time": "6:50",
+      "building": "TM102",
+      "room": "1"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A02",
+      "instructor": "",
+      "category": "DI",
+      "days": "M",
+      "start_time": "7:00",
+      "end_time": "7:50",
+      "building": "TM102",
+      "room": "1"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A03",
+      "instructor": "",
+      "category": "DI",
+      "days": "F",
+      "start_time": "2:00",
+      "end_time": "2:50",
+      "building": "SOLIS",
+      "room": "111"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A04",
+      "instructor": "",
+      "category": "DI",
+      "days": "F",
+      "start_time": "3:00",
+      "end_time": "3:50",
+      "building": "SOLIS",
+      "room": "111"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "3/23/2023",
+      "instructor": "",
+      "category": "FI",
+      "days": "Th",
+      "start_time": "7:00",
+      "end_time": "9:59",
+      "building": "TBA",
+      "room": ""
+    }
+  ]
+}

@@ -350,7 +350,7 @@ with open('coursedata.csv', 'w', encoding='utf8', newline='') as f:
             "discussions": disc_list
         }
 
-        newDirectory = "test/" + str(lect_file_name)
+        newDirectory = "BILD/" + str(lect_file_name)
 
         with open(lect_file_name, "w") as outfile:
             json.dump(lect_this_dict, outfile, indent=2)

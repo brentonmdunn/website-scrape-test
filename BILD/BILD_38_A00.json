@@ -1,0 +1,56 @@
+{
+  "department": "BILD",
+  "course_code": "38",
+  "class_section_code": "A00",
+  "section_code": "A00",
+  "instructor": "Macagno",
+  "category": "LE",
+  "days": "TTh",
+  "start_time": "24:30",
+  "end_time": "13:50",
+  "building": "MANDE",
+  "room": "B-150",
+  "disc_num": 2,
+  "midterm": false,
+  "discussions": [
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A01",
+      "instructor": "",
+      "category": "DI",
+      "days": "F",
+      "start_time": "8:00",
+      "end_time": "8:50",
+      "building": "HSS",
+      "room": "2154"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "A02",
+      "instructor": "",
+      "category": "DI",
+      "days": "F",
+      "start_time": "9:00",
+      "end_time": "9:50",
+      "building": "HSS",
+      "room": "2154"
+    },
+    {
+      "department": "CSE",
+      "course_code": "",
+      "class_section_code": "",
+      "section_code": "3/21/2023",
+      "instructor": "",
+      "category": "FI",
+      "days": "T",
+      "start_time": "11:30",
+      "end_time": "2:29",
+      "building": "TBA",
+      "room": ""
+    }
+  ]
+}

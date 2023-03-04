@@ -4,13 +4,15 @@ import re
 from csv import writer
 import constant
 
-url = "http://courses.ucsd.edu/courseList.aspx?name=CSE%20&dept=true"
+url = "http://courses.ucsd.edu/courseList.aspx?name=BILD"
 
 page = requests.get(url)
 
 soup = BeautifulSoup(page.content, "html.parser")
 
-with open('courses.csv', 'w', encoding='utf8', newline='') as f:
+file_name = "courses" + "BILD" + ".csv"
+
+with open(file_name, 'w', encoding='utf8', newline='') as f:
 
     thewriter = writer(f)
     # header = ['Course']
